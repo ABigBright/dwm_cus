@@ -1,3 +1,5 @@
+#include <X11/XF86keysym.h>
+
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
@@ -63,8 +65,12 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "st", NULL };
+static const char *termcmd[]  = { "alacritty", NULL };
 static const char *albertcmd[]  = { "albert", "show", NULL };
+static const char* audiomute[] = {"/home/briq/.dwm/scripts/audiomute.sh", NULL};
+static const char* audioraise[] = {"/home/briq/.dwm/scripts/audioraise.sh", "10"};
+static const char* audiolower[] = {"/home/briq/.dwm/scripts/audiolower.sh", "10"};
+
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -104,6 +110,9 @@ static Key keys[] = {
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {1} }, 
+	{ 0,                            XF86XK_AudioMute,        spawn,          {.v = audiomute } },
+	{ 0,                            XF86XK_AudioLowerVolume, spawn,          {.v = audiolower } },
+	{ 0,                            XF86XK_AudioRaiseVolume, spawn,          {.v = audioraise } },
 };
 
 /* button definitions */
