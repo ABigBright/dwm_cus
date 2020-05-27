@@ -70,6 +70,8 @@ static const char *albertcmd[]  = { "albert", "show", NULL };
 static const char* audiomute[] = {"/home/briq/.dwm/scripts/audiomute.sh", NULL};
 static const char* audioraise[] = {"/home/briq/.dwm/scripts/audioraise.sh", "10"};
 static const char* audiolower[] = {"/home/briq/.dwm/scripts/audiolower.sh", "10"};
+static const char* brightnessinc[] = {"/home/briq/.dwm/scripts/brightnessinc.sh", "10"};
+static const char* brightnessdec[] = {"/home/briq/.dwm/scripts/brightnessdec.sh", "10"};
 
 
 static Key keys[] = {
@@ -110,9 +112,11 @@ static Key keys[] = {
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {1} }, 
-	{ 0,                            XF86XK_AudioMute,        spawn,          {.v = audiomute } },
-	{ 0,                            XF86XK_AudioLowerVolume, spawn,          {.v = audiolower } },
-	{ 0,                            XF86XK_AudioRaiseVolume, spawn,          {.v = audioraise } },
+	{ 0,                            XF86XK_AudioMute,          spawn,          {.v = audiomute } },
+	{ 0,                            XF86XK_AudioLowerVolume,   spawn,          {.v = audiolower } },
+	{ 0,                            XF86XK_AudioRaiseVolume,   spawn,          {.v = audioraise } },
+	{ 0,                            XF86XK_MonBrightnessUp,    spawn,          {.v = brightnessinc } },
+	{ 0,                            XF86XK_MonBrightnessDown,  spawn,          {.v = brightnessdec } },
 };
 
 /* button definitions */
