@@ -82,7 +82,8 @@ static const char *dmenucmd[]      = { "dmenu_run", "-m", dmenumon, "-fn", dmenu
 static const char *termcmd[]       = { "alacritty", NULL };
 static const char *albertcmd[]     = { "albert", "show", NULL };
 static const char *rangercmd[]     = { "alacritty", "-e", "ranger", NULL };
-static const char *trayercmd[]       = { "/home/briq/.dwm/scripts/trayertoggle.sh", NULL };
+static const char *trayercmd[]     = { "/home/briq/.dwm/scripts/trayertoggle.sh", NULL };
+static const char *i3lockcmd[]     = { "i3lock", "-i", "~/.dwm/scripts/lock.png", NULL };
 static const char* audiomute[]     = {"/home/briq/.dwm/scripts/audiomute.sh", NULL};
 static const char* audioraise[]    = {"/home/briq/.dwm/scripts/audioraise.sh", "10"};
 static const char* audiolower[]    = {"/home/briq/.dwm/scripts/audiolower.sh", "10"};
@@ -96,6 +97,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
     { MODKEY,                       XK_f,      spawn,          {.v = rangercmd } },
 	{ MODKEY|ShiftMask,             XK_t,      spawn,          {.v = trayercmd } },
+	{ MODKEY|ShiftMask,             XK_m,      spawn,          {.v = i3lockcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY|ShiftMask,             XK_j,      rotatestack,    {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_k,      rotatestack,    {.i = -1 } },
