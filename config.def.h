@@ -77,18 +77,19 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static char dmenumon[2]            = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[]      = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *termcmd[]       = { "alacritty", NULL };
-static const char *albertcmd[]     = { "albert", "show", NULL };
-static const char *rangercmd[]     = { "alacritty", "-e", "ranger", NULL };
-static const char *trayercmd[]     = { "/home/briq/.dwm/scripts/trayertoggle.sh", NULL };
-static const char *i3lockcmd[]     = { "i3lock", "-i", "~/.dwm/scripts/lock.png", NULL };
-static const char* audiomute[]     = {"/home/briq/.dwm/scripts/audiomute.sh", NULL};
-static const char* audioraise[]    = {"/home/briq/.dwm/scripts/audioraise.sh", "10"};
-static const char* audiolower[]    = {"/home/briq/.dwm/scripts/audiolower.sh", "10"};
-static const char* brightnessinc[] = {"/home/briq/.dwm/scripts/brightnessinc.sh", "10"};
-static const char* brightnessdec[] = {"/home/briq/.dwm/scripts/brightnessdec.sh", "10"};
+static char dmenumon[2]             = "0"; /* component of dmenucmd, manipulated in spawn() */
+static const char *dmenucmd[]       = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *termcmd[]        = { "alacritty", NULL };
+static const char *albertcmd[]      = { "albert", "show", NULL };
+static const char *rangercmd[]      = { "alacritty", "-e", "ranger", NULL };
+static const char *trayercmd[]      = { "/home/briq/.dwm/scripts/trayertoggle.sh", NULL };
+static const char *i3lockcmd[]      = { "i3lock", "-i", "~/.dwm/scripts/lock.png", NULL };
+static const char* audiomute[]      = {"/home/briq/.dwm/scripts/audiomute.sh", NULL};
+static const char* audioraise[]     = {"/home/briq/.dwm/scripts/audioraise.sh", "10"};
+static const char* audiolower[]     = {"/home/briq/.dwm/scripts/audiolower.sh", "10"};
+static const char* brightnessinc[]  = {"/home/briq/.dwm/scripts/brightnessinc.sh", "10"};
+static const char* brightnessdec[]  = {"/home/briq/.dwm/scripts/brightnessdec.sh", "10"};
+static const char* touchpadtoggle[] = {"/home/briq/.dwm/scripts/touchpad_opr.sh", "0"};
 
 
 static Key keys[] = {
@@ -137,6 +138,7 @@ static Key keys[] = {
 	{ 0,                            XF86XK_AudioRaiseVolume,   spawn,          {.v = audioraise } },
 	{ 0,                            XF86XK_MonBrightnessUp,    spawn,          {.v = brightnessinc } },
 	{ 0,                            XF86XK_MonBrightnessDown,  spawn,          {.v = brightnessdec } },
+	{ 0,                            XK_Super_L,                spawn,          {.v = touchpadtoggle } },
 };
 
 /* button definitions */
