@@ -1544,7 +1544,7 @@ restack(Monitor *m)
 void
 rotatestack(const Arg *arg)
 {
-	Client *c = NULL, *f;
+	Client *c = NULL, *f, *curr_stk = NULL;
 
 	if (!selmon->sel)
 		return;
@@ -1556,6 +1556,7 @@ rotatestack(const Arg *arg)
 			attach(c);
 			detachstack(c);
 			attachstack(c);
+            curr_stk = c;
 		}
 	} else {
 		if ((c = nexttiled(selmon->clients))){
@@ -1563,12 +1564,13 @@ rotatestack(const Arg *arg)
 			enqueue(c);
 			detachstack(c);
 			enqueuestack(c);
+            curr_stk = c->next;
 		}
 	}
 	if (c){
 		arrange(selmon);
 		unfocus(f, 1); // unfocus previous sel stack
-		focus(c->next); // focus curent main stack
+		focus(curr_stk); // focus curent main stack
 		restack(selmon);
 	}
 }
