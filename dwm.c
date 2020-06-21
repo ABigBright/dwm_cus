@@ -1567,8 +1567,8 @@ rotatestack(const Arg *arg)
 	}
 	if (c){
 		arrange(selmon);
-		//unfocus(f, 1);
-		focus(f);
+		unfocus(f, 1); // unfocus previous sel stack
+		focus(c->next); // focus curent main stack
 		restack(selmon);
 	}
 }
