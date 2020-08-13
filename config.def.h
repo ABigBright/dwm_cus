@@ -9,28 +9,29 @@ static const unsigned int gappih      = 6;       /* horiz inner gap between wind
 static const unsigned int gappiv      = 6;       /* vert inner gap between windows */
 static const unsigned int gappoh      = 6;       /* horiz outer gap between windows and screen edge */
 static const unsigned int gappov      = 6;       /* vert outer gap between windows and screen edge */
-static const int smartgaps            = 0;        /* 1 means no outer gap when there is only one window */
+static const int smartgaps            = 1;        /* 1 means no outer gap when there is only one window */
 static const int showbar              = 1;        /* 0 means no bar */
-static const int topbar               = 1;        /* 0 means bottom bar */
+static const int topbar               = 0;        /* 0 means bottom bar */
 static const Bool viewontag           = True;     /* Switch view on tag switch */
 static const int decorhints           = 1;        /* 1 means respect decoration hints */
-static const char *fonts[]            = {"FiraCode Nerd Font:size = 12"};
-static const char dmenufont[]         = "FiraCode Nerd Font:size = 12";
+static const char *fonts[]            = {"FiraCode Nerd Font:size=12"};
+static const char dmenufont[]         = "FiraCode Nerd Font:size=12";
 static const char col_gray1[]         = "#222222";
 static const char col_gray2[]         = "#444444";
 static const char col_gray3[]         = "#bbbbbb";
-static const char col_gray4[]         = "#eeeeee";
-static const char col_cyan[]          = "#005577";
+static const char col_gray4[]         = "#ffffff";
+static const char col_cyan[]          = "#37474f";
 static const char col_black[]         = "#000000";
 static const char col_yellow[]        = "#EEB422";
 static const char col_green[]         = "#00ff00";
+static const char col_border[]        = "#42A5F5";
 static const unsigned int baralpha    = 0xd0;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]        = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_gray2,  col_green },
-	[SchemeHid]  = { col_cyan,  col_gray1, col_cyan  },
+	[SchemeSel]  = { col_gray4, col_cyan,  col_border },
+	[SchemeHid]  = { col_cyan,  col_gray1, col_border },
 };
 
 static const unsigned int alphas[][3]      = {
@@ -53,6 +54,7 @@ static const unsigned int alphas[][3]      = {
 
 /* tagging */
 static const char *tags[] = { "一", "二", "三", "四", "五", "六", "七", "八", "九" };
+/* static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9"}; */
 
 // this icon can be support by nerd font
 /* static const char *tags[] = {  */
