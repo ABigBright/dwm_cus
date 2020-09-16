@@ -158,7 +158,7 @@ static Key keys[] = {
 	{ 0,                            XF86XK_AudioRaiseVolume,   spawn,          {.v = audioraise } },
 	{ 0,                            XF86XK_MonBrightnessUp,    spawn,          {.v = brightnessinc } },
 	{ 0,                            XF86XK_MonBrightnessDown,  spawn,          {.v = brightnessdec } },
-	{ 0,                            XK_Super_L,                spawn,          {.v = touchpadtoggle } },
+	{ 0,                            XF86XK_TouchpadToggle,     spawn,          {.v = touchpadtoggle } },
 	{ 0,                            XK_Print,                  spawn,          {.v = screenshottoggle } },
 };
 
