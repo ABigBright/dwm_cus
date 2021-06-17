@@ -53,7 +53,11 @@ static const unsigned int alphas[][3]      = {
 /* 嗢-FA7B */
 
 /* tagging */
-static const char *tags[] = { "一", "二", "三", "四", "五", "六", "七", "八", "九" };
+/* static const char *tags[] = { "一", "二", "三", "四", "五", "六", "七", "八", "九" }; */
+#define MAX_TAGNAME_LEN 14          /* excludes TAG_PREPEND */
+#define TAG_PREPEND     "%1i:"      /* formatted as 2 chars */
+#define MAX_TAGLEN      16          /* altogether */
+static char tags[][MAX_TAGLEN] = { "一", "二", "三", "四", "五", "六", "七", "八", "九" };
 /* static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9"}; */
 
 // this icon can be support by nerd font
@@ -118,35 +122,36 @@ static const char* screenshottoggle[] = {"flameshot", "gui",  NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_p,      spawn,          {.v = albertcmd } },
-	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
-    { MODKEY,                       XK_f,      spawn,          {.v = rangercmd } },
-	{ MODKEY|ShiftMask,             XK_t,      spawn,          {.v = trayercmd } },
-	{ MODKEY|ShiftMask,             XK_m,      spawn,          {.v = i3lockcmd } },
-	{ MODKEY,                       XK_b,      togglebar,      {0} },
-	{ MODKEY|ShiftMask,             XK_j,      rotatestack,    {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_k,      rotatestack,    {.i = -1 } },
-	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
-	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
-	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
-	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY,                       XK_Return, zoom,           {0} },
-	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
-	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY|ShiftMask,             XK_f,      fullscreen,     {0} },
-	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY,                       XK_space,  setlayout,      {0} },
-	{ MODKEY,                       XK_r,      reorganizetags, {0} },
-	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
-	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
-	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
-	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
-	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+	{ MODKEY,                       XK_p,         spawn,          {.v = albertcmd } },
+	{ MODKEY|ShiftMask,             XK_Return,    spawn,          {.v = termcmd } },
+    { MODKEY,                       XK_f,         spawn,          {.v = rangercmd } },
+	{ MODKEY|ShiftMask,             XK_t,         spawn,          {.v = trayercmd } },
+	{ MODKEY|ShiftMask,             XK_m,         spawn,          {.v = i3lockcmd } },
+	{ MODKEY,                       XK_b,         togglebar,      {0} },
+	{ MODKEY|ShiftMask,             XK_j,         rotatestack,    {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_k,         rotatestack,    {.i = -1 } },
+	{ MODKEY,                       XK_j,         focusstack,     {.i = +1 } },
+	{ MODKEY,                       XK_k,         focusstack,     {.i = -1 } },
+	{ MODKEY,                       XK_i,         incnmaster,     {.i = +1 } },
+	{ MODKEY,                       XK_d,         incnmaster,     {.i = -1 } },
+	{ MODKEY,                       XK_h,         setmfact,       {.f = -0.05} },
+	{ MODKEY,                       XK_l,         setmfact,       {.f = +0.05} },
+	{ MODKEY,                       XK_Return,    zoom,           {0} },
+	{ MODKEY,                       XK_Tab,       view,           {0} },
+	{ MODKEY|ShiftMask,             XK_c,         killclient,     {0} },
+	{ MODKEY,                       XK_t,         setlayout,      {.v = &layouts[0]} },
+	{ MODKEY|ShiftMask,             XK_f,         fullscreen,     {0} },
+	{ MODKEY,                       XK_m,         setlayout,      {.v = &layouts[2]} },
+	{ MODKEY,                       XK_space,     setlayout,      {0} },
+	{ MODKEY,                       XK_r,         reorganizetags, {0} },
+	{ MODKEY|ShiftMask,             XK_space,     togglefloating, {0} },
+	{ MODKEY,                       XK_0,         view,           {.ui = ~0 } },
+	{ MODKEY|ShiftMask,             XK_0,         tag,            {.ui = ~0 } },
+	{ MODKEY,                       XK_comma,     focusmon,       {.i = -1 } },
+	{ MODKEY,                       XK_period,    focusmon,       {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_comma,     tagmon,         {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_period,    tagmon,         {.i = +1 } },
+	{ MODKEY,                       XK_semicolon, nametag,        {0} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
