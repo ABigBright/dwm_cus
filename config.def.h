@@ -122,6 +122,7 @@ static const char* screenshottoggle[] = {"flameshot", "gui",  NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
+	{ MODKEY|ShiftMask,             XK_p,         spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_p,         spawn,          {.v = albertcmd } },
 	{ MODKEY|ShiftMask,             XK_Return,    spawn,          {.v = termcmd } },
     { MODKEY,                       XK_f,         spawn,          {.v = rangercmd } },
