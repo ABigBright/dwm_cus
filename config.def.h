@@ -3,7 +3,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx    = 0;        /* border pixel of windows */
+static const unsigned int borderpx    = 2;        /* border pixel of windows */
 static const unsigned int snap        = 32;       /* snap pixel */
 static const unsigned int gappih      = 4;       /* horiz inner gap between windows */
 static const unsigned int gappiv      = 4;       /* vert inner gap between windows */
@@ -13,7 +13,7 @@ static const int smartgaps            = 1;        /* 1 means no outer gap when t
 static const int showbar              = 1;        /* 0 means no bar */
 static const int topbar               = 0;        /* 0 means bottom bar */
 static const Bool viewontag           = True;     /* Switch view on tag switch */
-static const int decorhints           = 0;        /* 1 means respect decoration hints */
+static const int decorhints           = 1;        /* 1 means respect decoration hints */
 static const char *fonts[]            = {"monospace:size=10"};
 static const char dmenufont[]         = "serif:size=10";
 static const char col_gray1[]         = "#222222";
@@ -75,6 +75,11 @@ static const Rule rules[] = {
 	{ "Firefox"      , NULL, NULL, 1 << 1, 0, -1 },
 	{ "Chromium"     , NULL, NULL, 1 << 1, 0, -1 }, // start chrome in tag 1
 	{ "Google-chrome", NULL, NULL, 1 << 1, 0, -1 }, // start chrome in tag 1
+};
+
+/* exclude window border pixel array*/
+const char *no_borderpx_win[] = {
+    "Albert",
 };
 
 /* layout(s) */
@@ -213,3 +218,18 @@ swaptags(const Arg *arg)
 	arrange(selmon);
 }
 
+int is_no_borderpx_win(const char *name)
+{
+    int cnt = 0;
+    int idx = 0;
+
+    cnt = sizeof(no_borderpx_win)/sizeof(no_borderpx_win[0]);
+
+    for (idx = 0; idx < cnt; idx++)
+    {
+        if (!strcmp(name, no_borderpx_win[idx]))
+            return 1;
+    }
+
+    return 0;
+}
