@@ -1,6 +1,48 @@
-dwm - dynamic window manager
-============================
-dwm is an extremely fast, small, and dynamic window manager for X.
+dwm - dynamic window manager (briq's custom build)
+====================================================
+
+Based on dwm 6.2 with the following patches and customizations.
+
+
+Patches Applied
+---------------
+- autostart
+- alpha (transparent status bar)
+- awesomebar
+- decoration hints
+- fullscreen
+- hide vacant tags
+- nametag-prepend (custom tag names)
+- noborder
+- pertag (per-tag settings)
+- restartsig (restart via SIGHUP)
+- rotatestack
+- swaptags
+- vanitygaps
+- viewontag
+- reorganizetags
+
+
+Customizations
+--------------
+- Modkey: Mod4 (Win key)
+- Font: fontconfig-based (DejaVu Sans Mono Nerd Font)
+- Custom keybindings for volume, brightness, screen capture, lock screen, etc.
+- Albert/Rofi launcher integration
+- Chrome bound to specific tag
+- Touchpad toggle
+- No border pixel for single windows
+- Custom border colors and gap settings
+
+
+Bug Fixes
+---------
+- **pertag curtag UB crash**: Fixed undefined behavior in toggleview when
+  `curtag == 0` (the "view all tags" state). The expression `1 << (curtag - 1)`
+  evaluates to `1 << -1` when `curtag` is 0, which is undefined behavior in C.
+  This caused crashes after prolonged use of `Mod+0` (view all tags) followed
+  by toggleview operations. Fixed by checking `curtag == 0` before the shift
+  (short-circuit evaluation prevents UB).
 
 
 Requirements
